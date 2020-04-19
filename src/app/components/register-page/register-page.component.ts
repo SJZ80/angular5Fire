@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class RegisterPageComponent implements OnInit {
 
+  private mensaje: string
   constructor(
 
     private authService: AuthService,
@@ -27,11 +28,13 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSubmitAddUser(email:string,password:string){
-
+    
     this.authService.registerUser(email,password)
-                    .then((userCredential)=>{
-                      console.log('Usuario Registrado',userCredential)
-                      this.ruta.navigate(['privado'])                  
+                    .then(this.authService.sendEmailVerified)
+                    .then((res)=>{
+                      this.mensaje = 'Usuario registrado, favor de verificar email para poder acceder'  
+                      this.authService.logout()
+                      
                     })
                     .catch((err)=>{console.log('Usuario No Registrado',err)})
 

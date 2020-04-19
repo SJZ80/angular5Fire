@@ -3,6 +3,11 @@
         <div class="card shadow ">
             <div class="card-body">
                 <h1 class="text-center">Registro</h1>
+                <br>
+                <div class="alert alert-dismissible alert-danger" *ngIf="mensaje">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{mensaje}}</strong> <a routerLink="home" class="alert-link"> Volver al Home</a>
+                </div>
                 <form>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -12,10 +17,10 @@
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" class="form-control" #pass>
                     </div>
-                    <input type="button" value="ENVIAR" class="btn btn-primary btn-block btn-lg" (click)="onSubmitAddUser(email.value,pass.value)">
+                    <input type="button" value="ENVIAR" class="btn btn-primary btn-block btn-lg"
+                        (click)="onSubmitAddUser(email.value,pass.value)">
                 </form>
             </div>
         </div>
     </div>
 </div>
-
