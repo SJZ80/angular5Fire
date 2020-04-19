@@ -14,15 +14,15 @@
     </ul>
     <div class="text-right">
       <ul class="navbar-nav mx-auto">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="login">Login</a>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!this.isLogin">
+          <a class="nav-link" routerLink="login" >Login</a>
         </li>
 
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="register">Register</a>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!this.isLogin"> 
+          <a class="nav-link" routerLink="register" >Register</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="">Salir</a>
+        <li class="nav-item" routerLinkActive="active" *ngIf="this.isLogin" >
+          <a class="nav-link" href="#" (click)="this.estadoLogin.logout()" >Salir</a>
         </li>
 
       </ul>

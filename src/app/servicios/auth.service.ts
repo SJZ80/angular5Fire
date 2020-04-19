@@ -24,6 +24,8 @@ export class AuthService {
 
   logout() {
 
+    console.log("En el logout");
+    
     return this.afAuth.auth.signOut()
 
   }

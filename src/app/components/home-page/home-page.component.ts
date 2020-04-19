@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public estadoLogin: AuthService) { }
 
   ngOnInit() {
+    
+    this.estadoLogin.getUserState().subscribe((estado)=>{
+      
+      if (estado) return console.log("Usuario SingIn", estado);
+      return console.log("Usuario no logueado");
+    })
   }
 
 }
